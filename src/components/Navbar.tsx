@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +49,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
-          <img src={logo} alt="Sweet Crumbs Bakery" className="h-12 mr-3" />
+          <img 
+            src="https://images.unsplash.com/photo-1577280607002-8605d70063a8?q=80&w=1287&auto=format&fit=crop"
+            alt="Sweet Crumbs Bakery" 
+            className="h-12 w-12 mr-3 object-cover rounded-full" 
+          />
           <span className="font-playfair text-xl md:text-2xl font-bold text-bakery-brown">
             Sweet Crumbs
           </span>

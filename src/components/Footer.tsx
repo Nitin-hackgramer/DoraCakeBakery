@@ -1,7 +1,6 @@
 
 import { Link } from "react-router-dom";
 import { Instagram, Mail, MapPin, Phone, Clock } from "lucide-react";
-import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -11,7 +10,11 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="flex flex-col space-y-4">
             <div className="flex items-center">
-              <img src={logo} alt="Sweet Crumbs Bakery" className="h-12 mr-3" />
+              <img 
+                src="https://images.unsplash.com/photo-1577280607002-8605d70063a8?q=80&w=1287&auto=format&fit=crop" 
+                alt="Sweet Crumbs Bakery" 
+                className="h-12 w-12 mr-3 object-cover rounded-full" 
+              />
               <span className="font-playfair text-xl font-bold text-bakery-brown">
                 Sweet Crumbs
               </span>

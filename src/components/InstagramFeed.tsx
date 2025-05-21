@@ -4,12 +4,12 @@ import { Instagram } from "lucide-react";
 
 const InstagramFeed = () => {
   const [images, setImages] = useState([
-    "/src/assets/instagram-1.jpg",
-    "/src/assets/instagram-2.jpg",
-    "/src/assets/instagram-3.jpg",
-    "/src/assets/instagram-4.jpg",
-    "/src/assets/instagram-5.jpg",
-    "/src/assets/instagram-6.jpg",
+    "https://images.unsplash.com/photo-1506224772180-d75b3efbe9be?q=80&w=1286&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?q=80&w=986&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=1050&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1616321590289-67d96fb3d250?q=80&w=1287&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?q=80&w=1170&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605807646983-377bc5a76493?q=80&w=1287&auto=format&fit=crop",
   ]);
 
   return (

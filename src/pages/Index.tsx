@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -6,8 +5,6 @@ import ProductCard, { Product } from "@/components/ProductCard";
 import TestimonialCard, { Testimonial } from "@/components/TestimonialCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import InstagramFeed from "@/components/InstagramFeed";
-import heroImage from "../assets/hero-image.jpg";
-import aboutImage from "../assets/about-image.jpg";
 
 const HomePage = () => {
   // Featured products data
@@ -18,7 +15,7 @@ const HomePage = () => {
       category: "Cakes",
       description: "Rich, moist chocolate cake with smooth ganache and chocolate shavings.",
       price: 32.99,
-      image: "/src/assets/chocolate-cake.jpg",
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1780&auto=format&fit=crop",
     },
     {
       id: "croissant",
@@ -26,7 +23,7 @@ const HomePage = () => {
       category: "Pastries",
       description: "Flaky, buttery layers with a golden crust and soft interior.",
       price: 3.99,
-      image: "/src/assets/croissant.jpg",
+      image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1226&auto=format&fit=crop",
       tags: ["Bestseller"],
     },
     {
@@ -35,7 +32,7 @@ const HomePage = () => {
       category: "Bread",
       description: "Traditional sourdough with a crispy crust and tangy flavor.",
       price: 7.50,
-      image: "/src/assets/sourdough.jpg",
+      image: "https://images.unsplash.com/photo-1585478259715-abd02786c8aa?q=80&w=1171&auto=format&fit=crop",
     },
     {
       id: "macarons",
@@ -43,7 +40,7 @@ const HomePage = () => {
       category: "Pastries",
       description: "Delicate almond meringue cookies with ganache filling.",
       price: 12.99,
-      image: "/src/assets/macarons.jpg",
+      image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?q=80&w=1170&auto=format&fit=crop",
       tags: ["Gluten-Free"],
     },
   ];
@@ -77,7 +74,7 @@ const HomePage = () => {
       <section className="relative min-h-screen flex items-center">
         <div className="absolute inset-0 z-0">
           <img
-            src={heroImage}
+            src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=1170&auto=format&fit=crop"
             alt="Fresh baked goods"
             className="w-full h-full object-cover"
           />
@@ -118,7 +115,7 @@ const HomePage = () => {
             <ScrollReveal>
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <img
-                  src={aboutImage}
+                  src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?q=80&w=1170&auto=format&fit=crop"
                   alt="Baker making bread"
                   className="w-full h-auto object-cover"
                 />

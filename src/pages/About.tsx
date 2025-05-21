@@ -1,9 +1,6 @@
 
 import ScrollReveal from "@/components/ScrollReveal";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import teamImage from "../assets/team-image.jpg";
-import bakeryInterior from "../assets/bakery-interior.jpg";
-import bakingProcess from "../assets/baking-process.jpg";
 
 const AboutPage = () => {
   const values = [
@@ -34,19 +31,19 @@ const AboutPage = () => {
       name: "Emma Wilson",
       role: "Head Baker & Founder",
       bio: "Emma started baking alongside her grandmother at age 8 and turned her passion into Sweet Crumbs after culinary school.",
-      image: "/src/assets/team-1.jpg",
+      image: "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?q=80&w=1287&auto=format&fit=crop",
     },
     {
       name: "David Chen",
       role: "Pastry Chef",
       bio: "With 15 years of experience in fine dining restaurants, David brings artistry and precision to our pastry selection.",
-      image: "/src/assets/team-2.jpg",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1364&auto=format&fit=crop", 
     },
     {
       name: "Sophie Miller",
       role: "Bread Specialist",
       bio: "Sophie studied traditional bread-making techniques across Europe before joining our team to create our artisanal breads.",
-      image: "/src/assets/team-3.jpg",
+      image: "https://images.unsplash.com/photo-1604480133435-25b86862d276?q=80&w=1287&auto=format&fit=crop",
     },
   ];
 
@@ -73,7 +70,7 @@ const AboutPage = () => {
             <ScrollReveal>
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <img
-                  src={bakeryInterior}
+                  src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=1171&auto=format&fit=crop"
                   alt="Sweet Crumbs Bakery Interior"
                   className="w-full h-auto"
                 />
@@ -138,34 +135,38 @@ const AboutPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-10 items-center">
-            <ScrollReveal delay={300} className="order-2 md:order-1">
-              <div>
-                <h2 className="font-playfair text-3xl font-bold text-bakery-brown mb-6">
-                  Our Baking Process
-                </h2>
-                <div className="space-y-4 text-bakery-brown/80">
-                  <p>
-                    At Sweet Crumbs, we believe that exceptional baked goods require time, care, and the best ingredients. Our process begins with selecting premium flours, organic dairy, and locally sourced fruits.
-                  </p>
-                  <p>
-                    We mix our doughs and batters by hand, paying careful attention to texture and consistency. Many of our breads and pastries undergo long fermentation periods to develop complex flavors and perfect textures.
-                  </p>
-                  <p>
-                    Our bakers work through the night and early morning hours to ensure everything is fresh for our customers each day. We never use artificial preservatives, which means what you taste is pure, authentic flavor.
-                  </p>
+            <div className="order-2 md:order-1">
+              <ScrollReveal>
+                <div>
+                  <h2 className="font-playfair text-3xl font-bold text-bakery-brown mb-6">
+                    Our Baking Process
+                  </h2>
+                  <div className="space-y-4 text-bakery-brown/80">
+                    <p>
+                      At Sweet Crumbs, we believe that exceptional baked goods require time, care, and the best ingredients. Our process begins with selecting premium flours, organic dairy, and locally sourced fruits.
+                    </p>
+                    <p>
+                      We mix our doughs and batters by hand, paying careful attention to texture and consistency. Many of our breads and pastries undergo long fermentation periods to develop complex flavors and perfect textures.
+                    </p>
+                    <p>
+                      Our bakers work through the night and early morning hours to ensure everything is fresh for our customers each day. We never use artificial preservatives, which means what you taste is pure, authentic flavor.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            </div>
 
-            <ScrollReveal className="order-1 md:order-2">
-              <div className="rounded-lg overflow-hidden shadow-xl">
-                <img
-                  src={bakingProcess}
-                  alt="Our baking process"
-                  className="w-full h-auto"
-                />
-              </div>
-            </ScrollReveal>
+            <div className="order-1 md:order-2">
+              <ScrollReveal>
+                <div className="rounded-lg overflow-hidden shadow-xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1591247807366-aa95bc979007?q=80&w=1170&auto=format&fit=crop"
+                    alt="Our baking process"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
@@ -205,15 +206,15 @@ const AboutPage = () => {
             ))}
           </div>
 
-          <ScrollReveal>
-            <div className="text-center">
+          <div className="text-center">
+            <ScrollReveal>
               <img
-                src={teamImage}
+                src="https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1267&auto=format&fit=crop"
                 alt="Our full bakery team"
                 className="w-full max-w-3xl h-auto mx-auto rounded-lg shadow-xl"
               />
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
