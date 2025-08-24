@@ -1,14 +1,16 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProductCard, { Product } from "@/components/ProductCard";
+import { useMenu } from "../hooks/useMenu";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { Filter } from "lucide-react";
+import { Filter, Loader2 } from "lucide-react";
 
 const MenuPage = () => {
-  // All products data
-  const allProducts: Product[] = [
+  const menuProducts = useMenu();
+  
+  // Static fallback products data
+  const staticProducts: Product[] = [
     // Cakes
     {
       id: "classic-chocolate-cake",
@@ -86,16 +88,16 @@ const MenuPage = () => {
       description: "Traditional sourdough with a crispy crust and tangy flavor.",
       price: 7.50,
       image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=800",
-        },
-        {
+    },
+    {
       id: "baguette",
       name: "French Baguette", 
       category: "Bread",
       description: "Classic French bread with a crisp crust and soft, chewy interior.",
       price: 4.99,
       image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800",
-        },
-        {
+    },
+    {
       id: "multigrain",
       name: "Multigrain Loaf",
       category: "Bread", 
@@ -103,16 +105,16 @@ const MenuPage = () => {
       price: 6.50,
       image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800",
       tags: ["Healthy"],
-        },
-        {
+    },
+    {
       id: "ciabatta",
       name: "Ciabatta Bread",
       category: "Bread",
       description: "Italian bread with a crisp crust and soft, airy interior.",
       price: 5.99,
       image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800",
-        },
-        // Seasonal
+    },
+    // Seasonal
     {
       id: "pumpkin-spice-cake",
       name: "Pumpkin Spice Cake",
@@ -133,14 +135,35 @@ const MenuPage = () => {
     },
   ];
 
+  // Transform API data to match Product interface
+  const transformApiData = (apiData: any[]): Product[] => {
+    if (!apiData || !Array.isArray(apiData)) return [];
+    
+    return apiData.map((item: any) => ({
+      id: item.id?.toString() || item._id?.toString() || Math.random().toString(),
+      name: item.name || item.title || "Unknown Product",
+      category: item.category['name'] || "Uncategorized",
+      description: item.description || "No description available",
+      price: parseFloat(item.price) || 0,
+      image: item.image || item.imageUrl || item.img || "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800",
+      tags: item.tags.map((tag: any) => tag.name) || [],
+    }));
+  };
+
+  // Combine API products with static products
+  const allProducts: Product[] = [
+    ...transformApiData(menuProducts || []),
+    ...staticProducts
+  ];
+
   // State for filtering
   const [currentCategory, setCurrentCategory] = useState<string>("All");
   const [currentFilter, setCurrentFilter] = useState<string>("All");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts);
   const [showFilter, setShowFilter] = useState(false);
 
-  // All available categories
-  const categories = ["All", "Cakes", "Pastries", "Bread", "Seasonal"];
+  // Get unique categories from all products
+  const categories = ["All", ...Array.from(new Set(allProducts.map(p => p.category)))];
 
   // All available filters
   const filters = ["All", "Bestseller", "Gluten-Free", "Healthy", "Seasonal"];
@@ -162,10 +185,23 @@ const MenuPage = () => {
     }
 
     setFilteredProducts(result);
-  }, [currentCategory, currentFilter]);
+  }, [currentCategory, currentFilter, menuProducts]);
+
+  // Loading state - simple check if menuProducts is empty initially
+  const isLoading = menuProducts.length === 0;
 
   return (
     <div>
+      {/* Loading Overlay */}
+      {isLoading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-bakery-cream/80 backdrop-blur-sm">
+          <div className="text-center">
+            <Loader2 className="h-12 w-12 animate-spin text-bakery-brown mx-auto mb-4" />
+            <p className="text-bakery-brown text-lg">Loading delicious products...</p>
+          </div>
+        </div>
+      )}
+      
       {/* Hero Banner */}
       <section className="relative py-20 md:py-32 bg-bakery-cream">
         <div className="container mx-auto px-4 text-center">
@@ -176,6 +212,13 @@ const MenuPage = () => {
             <p className="text-bakery-brown/80 max-w-2xl mx-auto">
               Explore our handcrafted selection of freshly baked goods, made with love and the finest ingredients.
             </p>
+            {/* Show API status */}
+            {menuProducts && menuProducts.length > 0 && (
+              <div className="mt-4 inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                Fresh from our kitchen: {menuProducts.length} new items loaded
+              </div>
+            )}
           </ScrollReveal>
         </div>
       </section>
