@@ -14,7 +14,7 @@ export function useMenu() {
   const [menu, setMenu] = useState<MenuItem[]>([]);
 
     useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/menu/")
+    fetch("https://dora-cake-backend.onrender.com/api/menu/")
         .then(res => res.json())
         .then(data => {
         console.log("Fetched menu:", data); // 👈 Debug
@@ -25,5 +25,6 @@ export function useMenu() {
 
   return menu;
 }
+
 
 
